@@ -4,16 +4,24 @@ typedef list<int> li;
 
 int solve(vector<li> adj, int a)
 {
-    priority_queue<int> nodes();
-    int a = 1, groups = 0;
-    for (li list : adj)
+    bool a = true;
+    while (a)
     {
-        nodes[a] = list.size();
-        a++;
-    }
-
-    for (int a = 0; a < nodes.size(); a++)
-    {
+        list<int> listF;
+        for (int h = 0; h < adj.size(); h++)
+        {
+            if (adj[h].size() == 1)
+            {
+                listF.emplace_back(h);
+                adj.erase(adj.begin() + h);
+            }
+        }
+        for (int i = 0; i < adj.size(); i++)
+        {
+            for (int j = 0; j < adj[i].size(); j++)
+            {
+                        }
+        }
     }
 }
 
