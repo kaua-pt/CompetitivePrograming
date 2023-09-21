@@ -6,7 +6,7 @@ typedef pair<int, int> ii;
 const vector<ii> prio
 {
     ii(1, 1), ii(-1, -1), ii(1, -1), ii(-1, 1)
-}
+};
 
 const vector<ii> dirs{
     ii(1, 0),
