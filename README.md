@@ -1,9 +1,11 @@
+# Competitive Programming
+
 <div align="center">
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGpopluos3H4qH723Ke-98_N59REirOKopWGzdmITiwtQUhIIwoFE0KpS2jZ9EG2mJ4C4&usqp=CAU" style="width:50vw"></img>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGpopluos3H4qH723Ke-98_N59REirOKopWGzdmITiwtQUhIIwoFE0KpS2jZ9EG2mJ4C4&usqp=CAU" style="width:45vw"></img>
   <h3 align="center" >Competitive Programming </h3>
 
   <p align="center">
-     Meu repositório de programação competitiva :) </br>
+     Meu repositório de estudos e programação competitiva :) </br>
   </p>
 </div>
 
