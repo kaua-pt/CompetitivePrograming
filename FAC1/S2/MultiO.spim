@@ -1,0 +1,74 @@
+.data
+.text
+
+    iniciaMulti:
+        move $t0,$zero  #hi
+        move $t1,$a1    #lo
+
+    multi:
+        # algoritmo de multiplicação
+        andi $t2, $t1,1      #salva em t2 o valor de t1(multiplicador) mascarado em 1
+        beq $t2,$zero,shifts # se t2 for 0, ele pula para o próximo numero
+        # soma o numero de a0 no reg se ele n for zero
+        add $t0,$t0,$a0     # t0 += a0
+
+    shifts:
+        # realizar shifts para proxima interacao
+        andi $t3,$t0,1 # pegar bit menos significativode hi
+
+        # shift a direita 
+        srl $t0,$t0,1 
+        srl $t1,$t1,1 
+
+        #31 shift a esquerda
+        sll $t3,$t3,31
+        add $t1,$t1,$t3
+
+    volta:
+        # verifica se houve as 32 iterações
+        sub $t4 ,$t4,1
+        bne $t4,$zero,multi
+
+    done:
+        #verifica se as entradas tem sinais iguais
+        beq  $t8, $t9, arrumarHi
+
+        # se for negativo ele inverte o numero
+        nor $t1, $t1, $zero      #nega
+	    addi $t1, $t1, 1      #soma 1
+
+    arrumarHi:
+        beq $t8, $zero, proximo		#o multiplicando e negativo? não => próximo
+        nor $t0, $t0, $zero 	#nega
+    proximo: 
+        beq $t9, $zero, finaliza    #o multiplicador e negativo? não => fim
+        nor $t0, $t0, $zero     #nega
+        j finaliza
+    multifac:   
+
+        # Numeros em a0 (lo)e a1(hi) 
+        # Constante de iteracao
+        li $t4, 32
+
+        # Verifica os sinais dos numeros
+        slt	$t8, $a0, $zero		# $t8 = ($a0 < $zero) ? 1 : 0
+        slt	$t9, $a1, $zero		# $t9 = ($a1 < $zero) ? 1 : 0
+
+        # verifica se A0 e negativo, se nao for, ele verifica a1
+        # se for, ele aplica o complemento de 2 no numero
+        beq $t8,$zero,verA1
+        nor $a0,$a0,$zero
+        addi $a0,$a0,1
+
+    verA1:
+        # faz o mesmo que fez em a0
+        beq $t9,$zero,iniciaMulti
+        nor $a1, $a1, $zero      
+	    addi $a1, $a1, 1      
+        j iniciaMulti
+
+    finaliza:
+        # move os numeros para o retorno
+        mtlo $t1
+        mthi $t0
+        jal $ra
