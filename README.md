@@ -44,7 +44,7 @@ Alguns dos conteúdos abordados são:
 
 O aplicativo é construido com:</br>
 
-![Tecnologias](https://skillicons.dev/icons?i=c,cpp,js,yacc)
+![Tecnologias](https://skillicons.dev/icons?i=c,cpp,js,asm)
 
 Essas figuras também tendem a crescer.
 
