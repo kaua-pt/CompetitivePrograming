@@ -1,9 +1,9 @@
 <div align="center">
-  <img src="https://play-lh.googleusercontent.com/8ddL1kuoNUB5vUvgDVjYY3_6HwQcrg1K2fd_R8soD-e2QYj8fT9cfhfh3G0hnSruLKec" style="width:15vw"></img>
-  <h3 align="center">Competitive Programming/h3>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGpopluos3H4qH723Ke-98_N59REirOKopWGzdmITiwtQUhIIwoFE0KpS2jZ9EG2mJ4C4&usqp=CAU" style="width:50vw"></img>
+  <h3 align="center" >Competitive Programming </h3>
 
   <p align="center">
-     Meu repositório de programação competitiva </br>
+     Meu repositório de programação competitiva :) </br>
   </p>
 </div>
 
@@ -21,12 +21,34 @@ Este repositório tem o intuito de guardar todos os meus códigos e submissões 
 
 Além de tópicos diversos sobre programação competitiva.
 
+## 📖 Conteúdos
+Alguns dos conteúdos abordados são:
+
+- Ponteiros.
+- Algoritmos de ordenação.
+- Listas, pilhas e filas.
+- Tabelas Hash.
+- Heap.
+- Grafos e Arvores.
+- Instruções em assembly.
+- Aritmetica computacional.
+- Regex.
+- Algoritmos de escalonamento.
+- Algoritmos de substuição de página.
+- Algoritmos de busca em grafos.
+- Essa lista tende a crescer ....
+
 ## :hammer: Linguagens utilizadas
 
 O aplicativo é construido com:</br>
 
 ![Tecnologias](https://skillicons.dev/icons?i=c,cpp,js,yacc)
 
+Essas figuras também tendem a crescer.
+
 ## :dash: Licença
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+## 💥
+VASCO!
