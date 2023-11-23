@@ -5,6 +5,19 @@ using ll = long long;
 
 int solve()
 {
+    int n;
+    cin >> n;
+
+    if(n == 1)
+        return 0;
+
+    vector<int> v(n);
+    
+    for(int i = 0; i < n; i++)
+        cin >> v[i];
+    
+
+        
 }
 
 int main()
@@ -17,6 +30,6 @@ int main()
     cin >> N;
 
     for (int i = 0; i < N; i++)
-        solve();
+        cout << solve() << endl;
     return 0;
 }

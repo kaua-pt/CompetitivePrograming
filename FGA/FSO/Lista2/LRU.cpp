@@ -13,10 +13,8 @@ int hasNumber(int n, vector<int> l)
 int getPosition(int n, vector<int> l)
 {
     for (int i = 0; i < l.size(); i++)
-    {
         if (l[i] == n)
             return i;
-    }
 }
 
 int solve(int N, int P)

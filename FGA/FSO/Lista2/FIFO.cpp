@@ -23,20 +23,13 @@ int solve(int N, int P)
         {
             if (q.size() == N)
             {
-
                 pageF++;
                 l.remove(q.front());
                 q.pop();
-                q.push(n);
-                l.push_back(n);
             }
-            else
-            {
-                q.push(n);
-                l.push_back(n);
-            }
+            q.push(n);
+            l.push_back(n);
         }
-
         P--;
     }
     return pageF + N;
