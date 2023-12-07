@@ -40,6 +40,19 @@ Alguns dos conteúdos abordados são:
 - Algoritmos de busca em grafos.
 - Essa lista tende a crescer ....
 
+## 📽️ Projetos Realizados
+Segue uma lista de alguns projetos construídos por mim :
+Na faculdade:
+  - [FGAtlas](https://github.com/fga-eps-mds/2022-2-FGAtlas)
+  - [Sistema de Academia](https://github.com/kaua-pt/FGA-OO-SistemaDeAcademia)
+  - [Clone Amazon](https://github.com/kaua-pt/2023.2_G1_ProjetoAmazon/tree/main)
+  - [Analisador léxico](https://github.com/FCR-group/Trab-compiladores)
+  - [Documentação Simplenote](https://github.com/Requisitos-de-Software/2023.1-Simplenote)
+  - [Interação humano-computador MOJ](https://github.com/kaua-pt/Interacao-Humano-Computador)
+
+Indiviualmente:
+
+
 ## :hammer: Linguagens utilizadas
 
 O aplicativo é construido com:</br>
