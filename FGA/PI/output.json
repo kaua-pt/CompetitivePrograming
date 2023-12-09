@@ -1,0 +1,20 @@
+[
+  {
+    "AceleracaoInicial": 6.8,
+    "Distancia": 10.2,
+    "Pressao(PSI)": 0.5,
+    "Velocidade": 4
+  },
+  {
+    "AceleracaoInicial": 7.12,
+    "Distancia": 12.23,
+    "Pressao(PSI)": 0.6,
+    "Velocidade": 5.13
+  },
+  {
+    "AceleracaoInicial": 5.79,
+    "Distancia": 9.6,
+    "Pressao(PSI)": 0.4,
+    "Velocidade": 3.79
+  }
+]
