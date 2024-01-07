@@ -3,6 +3,9 @@
 using namespace std;
 using ll = long long;
 
+// filho -  maça de move
+// senao cai
+
 int solve()
 {
     int n;
