@@ -21,7 +21,16 @@ typedef struct Carro
     char fk_pessoa[12];
 } Carro;
 
-void menu();
+FILE *Open_file(char *path, char *mode)
+{
+    FILE *database;
+    database = fopen(path, mode);
+
+    if (database == NULL)
+        return fopen(path, "w+b");
+
+    return database;
+}
 
 int validarCPF(const char *cpf)
 {
@@ -62,8 +71,6 @@ int validarCPF(const char *cpf)
 
     if (cpf[10] - '0' != digito2)
         return 0;
-
-    printf("vrau");
 
     return 1;
 }
@@ -147,9 +154,11 @@ int procuraPlaca(char *placa, FILE *f)
     return 0;
 }
 
+void menu();
+
 void cadastraPessoa()
 {
-    FILE *f = fopen("pessoas.bin", "r+b");
+    FILE *f = Open_file("pessoas.bin", "r+b");
     Pessoa p;
 
     printf("Digite o nome da pessoa: ");
@@ -159,7 +168,7 @@ void cadastraPessoa()
     while (1)
     {
         scanf("%s", p.cpf);
-        if (validarCPF(p.cpf) && procuraPessoa(p.cpf, f))
+        if (validarCPF(p.cpf) && !procuraPessoa(p.cpf, f))
             break;
         printf("CPF invalido ou repetido\n Digite novamente: ");
     }
@@ -170,27 +179,13 @@ void cadastraPessoa()
     fwrite(&p, sizeof(Pessoa), 1, f);
     fclose(f);
 
-    printf("\nRegistrar mais pessoas?\n");
-    printf("1-Sim\n2-Nao\n");
-    int choose;
-    scanf("%d", &choose);
-
-    if (choose == 1)
-    {
-        system("cls");
-        cadastraPessoa();
-    }
-    else
-        printf("Aperte enter\n");
-    getchar();
-    system("cls || clear");
-    menu();
     return;
 }
+
 void cadastraCarro()
 {
-    FILE *fPessoa = fopen("pessoas.bin", "r+b");
-    FILE *fCarro = fopen("carro.bin", "r+b");
+    FILE *fPessoa = Open_file("pessoas.bin", "r+b");
+    FILE *fCarro = Open_file("carro.bin", "r+b");
     Pessoa p;
     Carro c;
 
@@ -198,7 +193,7 @@ void cadastraCarro()
     while (1)
     {
         scanf("%s", c.renavam);
-        if (validarRENAVAM(c.renavam) && procuraRenavam(c.renavam, fCarro))
+        if (!procuraRenavam(c.renavam, fCarro))
             break;
         printf("Renavam invalido ou repetido\n Digite novamente: ");
     }
@@ -207,7 +202,7 @@ void cadastraCarro()
     while (1)
     {
         scanf("%s", c.chassi);
-        if (procuraChassi(c.chassi, fCarro))
+        if (!procuraChassi(c.chassi, fCarro))
             break;
         printf("Chassi invalido ou repetido\n Digite novamente: ");
     }
@@ -219,11 +214,10 @@ void cadastraCarro()
     while (1)
     {
         scanf("%s", c.placa);
-        if (procuraPlaca(c.placa, fCarro))
+        if (!procuraPlaca(c.placa, fCarro))
             break;
         printf("Placa invalida ou repetida\n Digite novamente: ");
     }
-    scanf("%s", c.placa);
 
     printf("Digite a COR do carro: ");
     scanf("%s", c.cor);
@@ -244,41 +238,27 @@ void cadastraCarro()
     fclose(fCarro);
     fclose(fPessoa);
 
-    printf("\nRegistrar mais carros?\n");
-    printf("1-Sim\n2-Nao\n");
-    int choose;
-    scanf("%d", &choose);
-
-    if (choose == 1)
-    {
-        system("cls");
-        cadastraCarro();
-    }
-    else
-        printf("Aperte enter\n");
-    getchar();
-    system("cls || clear");
-    menu();
     return;
 };
 
 void finalizar()
 {
-    FILE *fPessoa = fopen("pessoas.bin", "r+b");
-    FILE *fCarro = fopen("carro.bin", "r+b");
+    FILE *fPessoa = Open_file("pessoas.bin", "r+b");
+    FILE *fCarro = Open_file("carro.bin", "r+b");
     Pessoa p;
     Carro c;
+    int i = 1;
 
-    while (!feof(fPessoa))
+    fseek(fPessoa, 0, SEEK_SET);
+    while (fread(&p, sizeof(Pessoa), 1, fPessoa))
     {
-        int i = 1;
-        fread(&p, sizeof(Pessoa), 1, fPessoa);
-        printf("Pessoa %d \n Nome: %s \n CPF: %s \n RG: %s\n", i, p.nome, p.cpf, p.rg);
+        printf("Pessoa %d \n  Nome: %s \n  CPF: %s \n  RG: %s\n", i, p.nome, p.cpf, p.rg);
+
         printf("Carros registrados:\n");
-        while (!feof(fCarro))
+        int j = 1;
+        fseek(fCarro, 0, SEEK_SET);
+        while (fread(&c, sizeof(Carro), 1, fCarro))
         {
-            int j = 1;
-            fread(&c, sizeof(Carro), 1, fCarro);
             if (strstr(c.fk_pessoa, p.cpf) != NULL)
             {
                 printf("Carro %d\n", j);
@@ -292,10 +272,10 @@ void finalizar()
             }
             j++;
         }
+
         i++;
         printf("\n");
     }
-    return;
 }
 
 void menu()
@@ -318,6 +298,7 @@ void menu()
         case 3:
             system("cls || clear");
             finalizar();
+            exit(0);
             break;
         default:
             printf("Invalid option %d\n");
