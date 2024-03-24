@@ -161,27 +161,31 @@ int compare_pessoas(const void *a, const void *b)
     return strcmp(pessoa_a->cpf, pessoa_b->cpf);
 }
 
-void inserirPessoa(FILE *f, Pessoa *p)
+void ordenaPessoa()
 {
-    fwrite(p, 1, sizeof(Pessoa), f);
+    FILE *f = fopen("pessoas.bin", "rb");
 
-    int i = 0;
     fseek(f, 0, SEEK_END);
     long file_size = ftell(f);
-    int num_pessoas = file_size / sizeof(Pessoa);
+    fseek(f, 0, SEEK_SET);
+
     Pessoa *pessoas = (Pessoa *)malloc(file_size);
 
-    while (fread(&pessoas[i], sizeof(Pessoa), 1, f))
+    int i = 0, j;
+    while (fread(&pessoas[i], sizeof(Pessoa), 1, f) == 1)
         i++;
+
+    fclose(f);
 
     qsort(pessoas, i, sizeof(Pessoa), compare_pessoas);
 
-    int tam = 0;
-    while (tam < i)
-    {
-        fwrite(&pessoas[tam], 1, sizeof(Pessoa), f);
-        tam++;
-    }
+    f = fopen("pessoas.bin", "wb");
+
+    for (j = 0; j < i; j++)
+        fwrite(&pessoas[j], sizeof(Pessoa), 1, f);
+
+    fclose(f);
+    free(pessoas);
 }
 
 int compare_carros(const void *a, const void *b)
@@ -191,8 +195,31 @@ int compare_carros(const void *a, const void *b)
     return strcmp(carro_a->renavam, carro_b->renavam);
 }
 
-void inserirCarro(FILE *f, Carro c)
+void ordenaCarro()
 {
+    FILE *f = fopen("carro.bin", "rb");
+
+    fseek(f, 0, SEEK_END);
+    long file_size = ftell(f);
+    fseek(f, 0, SEEK_SET);
+
+    Carro *carros = (Carro *)malloc(file_size);
+
+    int i = 0, j;
+    while (fread(&carros[i], sizeof(Carro), 1, f) == 1)
+        i++;
+
+    fclose(f);
+
+    qsort(carros, i, sizeof(Carro), compare_carros);
+
+    f = fopen("carro.bin", "wb");
+
+    for (j = 0; j < i; j++)
+        fwrite(&carros[j], sizeof(Carro), 1, f);
+
+    fclose(f);
+    free(carros);
 }
 
 void menu();
@@ -217,9 +244,10 @@ void cadastraPessoa()
     printf("Digite o RG da pessoa: ");
     scanf("%s", p.rg);
 
-    inserirPessoa(f, &p);
+    fwrite(&p, sizeof(Pessoa), 1, f);
     fclose(f);
 
+    ordenaPessoa();
     return;
 }
 
@@ -275,10 +303,10 @@ void cadastraCarro()
         printf("Pessoa nao cadastrada\n Digite novamente: ");
     }
 
-    inserirCarro(fCarro, c);
+    fwrite(&c, sizeof(Carro), 1, fCarro);
     fclose(fCarro);
     fclose(fPessoa);
-
+    ordenaCarro();
     return;
 };
 
