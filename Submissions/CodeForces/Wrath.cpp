@@ -2,13 +2,6 @@
 
 using namespace std;
 using ll = long long;
-using pp = pair<int, int>;
-
-int solve()
-{
-    int n;
-    cin >> n;
-}
 
 int32_t main()
 {
@@ -18,8 +11,8 @@ int32_t main()
 
     int T;
     cin >> T;
+    vector<int> claws(T);
+    bitset<1000000> bt(T);
 
-    while (T--)
-        cout << solve() << endl;
     return 0;
 }
