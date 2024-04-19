@@ -9,10 +9,20 @@ int32_t main()
     cout.tie(0);
     cin.tie(0);
 
-    int T;
+    int T, ans = 1, claw;
     cin >> T;
     vector<int> claws(T);
-    bitset<1000000> bt(T);
+    for (int i = 0; i < T; i++)
+        cin >> claws[i];
 
+    claw = claws[T - 1];
+
+    for (int i = T - 2; i >= 0; i--)
+    {
+        if (claw == 0)
+            ans++;
+        claw = max(claw - 1, claws[i]);
+    }
+    cout << ans << endl;
     return 0;
 }
