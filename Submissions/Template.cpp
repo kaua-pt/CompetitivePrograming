@@ -2,7 +2,13 @@
 
 using namespace std;
 using ll = long long;
-using pp = pair<int, int>;
+using ii = pair<int, int>;
+using vii = vector<ii>;
+using vi = vector<int>;
+
+const vii dir4 = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+
+#define all(x) x.begin(), x.end()
 
 int solve()
 {
