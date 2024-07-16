@@ -33,13 +33,12 @@ int solve()
             big = prefixes[j];
             continue;
         }
-        sum += prefixes[j];
+        else 
+            sum += prefixes[j];
+
         if (big == sum)
             count++;
     }
-
-    if (big == sum)
-        count++;
 
     return count;
 }
