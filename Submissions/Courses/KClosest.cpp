@@ -13,24 +13,6 @@ using namespace std;
 #define qmin priority_queue<int, vi, greater<int>>
 #define all(x) x.begin(), x.end()
 
-const vii dir4 = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
-
-int solve()
+vector<int> findClosestElements(vector<int> arr, int k, int x)
 {
-    int n;
-    cin >> n;
-}
-
-int32_t main()
-{
-    ios::sync_with_stdio(false);
-    cout.tie(0);
-    cin.tie(0);
-
-    int T;
-    cin >> T;
-
-    while (T--)
-        cout << solve() << endl;
-    return 0;
 }

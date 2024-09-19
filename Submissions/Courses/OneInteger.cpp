@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 #define ll long long
@@ -13,24 +12,22 @@ using namespace std;
 #define qmin priority_queue<int, vi, greater<int>>
 #define all(x) x.begin(), x.end()
 
-const vii dir4 = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
-
-int solve()
+int solve(vector<int> nums)
 {
-    int n;
-    cin >> n;
-}
+    int sum = 0;
+    qmin q;
+    for (auto e : nums)
+        q.push(e);
 
-int32_t main()
-{
-    ios::sync_with_stdio(false);
-    cout.tie(0);
-    cin.tie(0);
+    while (q.size() > 1)
+    {
+        int a = q.top();
+        q.pop();
+        int b = q.top();
+        q.pop();
 
-    int T;
-    cin >> T;
-
-    while (T--)
-        cout << solve() << endl;
-    return 0;
+        sum += a + b;
+        q.push(a + b);
+    }
+    return sum;
 }
