@@ -17,3 +17,10 @@ bool isPowerOfFour(int n)
             IsPowerOfFour = false;
     }
 }
+
+// a ideia é, potencias de 4 estão presentes com um bit unico em posição par
+// checa que tem bit ali
+// se nao passa
+/
+; // se for arpar , verifica se tem em mais algum lugar
+// se for par, verifica se tem em mais algum lugar
