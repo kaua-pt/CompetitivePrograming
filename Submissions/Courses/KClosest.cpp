@@ -15,4 +15,33 @@ using namespace std;
 
 vector<int> findClosestElements(vector<int> arr, int k, int x)
 {
+    // find x
+    int n = -1;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        if (arr[i] == x)
+        {
+            n = i;
+            break;
+        }
+    }
+
+    vector<int> ret;
+    int j = n - 1, l = n + 1;
+    while (k)
+    {
+        if (abs(arr[j] - arr[n]) > abs(arr[l] - arr[n]))
+        {
+            ret.push_back(arr[n]);
+            l++;
+        }
+        else
+        {
+            ret.push_back(arr[j]);
+            j--;
+        }
+        k--;
+    }
+    sort(all(ret));
+    return ret;
 }
