@@ -22,11 +22,3 @@ int solve(int n)
         ans = run;
     return ans;
 }
-
-int main()
-{
-    int n;
-    cin >> n;
-    cout << solve(n) << endl;
-    return 0;
-}

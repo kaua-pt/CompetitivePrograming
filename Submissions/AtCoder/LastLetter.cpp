@@ -1,6 +1,4 @@
 #include <bits/stdc++.h>
-#include <thread>
-#include <chrono>
 
 using namespace std;
 
@@ -17,21 +15,16 @@ using namespace std;
 
 const vii dir4 = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 
-void oddOrEven()
-{
-    int i = 0;
-
-    while (true)
-    {
-        if (i & 1)
-            cout << i << endl;
-    }
-}
-
 int32_t main()
 {
-    thread t(oddOrEven);
-    this_thread::sleep_for(std::chrono::seconds(1));
-    t.detach();
+    ios::sync_with_stdio(false);
+    cout.tie(0);
+    cin.tie(0);
+
+    string s;
+    int n;
+    cin >> n;
+    cin >> s;
+    cout << s[n - 1] << endl;
     return 0;
 }

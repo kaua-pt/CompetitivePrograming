@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "mobi.novaweb.nqaface",
+            "sha256_cert_fingerprints": [
+                "D4:01:0D:E1:BE:65:75:EE:28:E7:01:3A:C9:F7:9F:86:B6:4E:4E:D6:A1:69:2E:52:1A:00:2F:06:0C:B8:3B:6E"
+            ]
+        }
+    }
+]
