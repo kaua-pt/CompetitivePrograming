@@ -18,8 +18,30 @@ const vii dir4 = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 
 int solve()
 {
-    int n;
-    cin >> n;
+    int n, k, ans = 0, last = -1;
+    cin >> n >> k;
+    vi v(n);
+    for (size_t i = 0; i < n; i++)
+        cin >> v[i];
+
+    ssort(v);
+
+    for (size_t i = 0; i < n; i++)
+    {
+        if (v[i] > k)
+            break;
+
+        if (v[i] == k)
+        {
+            ans++;
+            continue;
+        }
+
+        // different and < k
+
+        last = v[i];
+    }
+    return 0;
 }
 
 int32_t main()

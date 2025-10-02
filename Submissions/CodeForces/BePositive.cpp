@@ -12,14 +12,24 @@ using namespace std;
 #define qmax priority_queue<int>
 #define qmin priority_queue<int, vi, greater<int>>
 #define all(x) x.begin(), x.end()
-#define ssort(x) sort(all(x))
 
 const vii dir4 = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 
 int solve()
 {
-    int n;
+    int n, input, zeros = 0, negative = 0;
     cin >> n;
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> input;
+        if (input == 0)
+            zeros++;
+        if (input == -1)
+            negative++;
+    }
+
+    return zeros + ((negative & 1) ? 2 : 0);
 }
 
 int32_t main()
