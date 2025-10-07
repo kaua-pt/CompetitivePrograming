@@ -26,13 +26,17 @@ struct DataSet
     void add(int num)
     {
         nTotal++;
-        ms.push_back(num);
-        ssort(ms);
+        ms[nTotal] = num;
+        sort(ms.begin(), ms.begin() + nTotal + 1);
     }
 
     void print()
     {
-        cout << ms[nTotal] << endl;
+        cout << "Vector: " << endl;
+        for (int i = 0; i <= nTotal; i++)
+            cout << ms[i] << " ";
+        cout << endl;
+        cout << ms[nTotal] - ms[0] << endl;
     }
 
     void remove(int num, int times)
@@ -54,14 +58,39 @@ struct DataSet
 
         // shift array
         shift = min(times, cut);
-        for ()
+        ms.erase(ms.begin() + begin, ms.begin() + shift + begin);
+        nTotal -= shift;
     }
 };
 
-int solve()
+void solve()
 {
-    int n;
-    cin >> n;
+    DataSet d(2 * 10e5);
+    int q, op, x, c;
+    cin >> q;
+    for (int i = 0; i < q; i++)
+    {
+        cin >> op;
+
+        if (op == 1)
+        {
+            cin >> x;
+            d.add(x);
+        }
+
+        if (op == 3)
+            d.print();
+
+        if (op == 2)
+        {
+            cout << "entrei" << endl;
+            cin >> x >> c;
+            d.print();
+            d.remove(x, c);
+        }
+    }
+
+    return;
 }
 
 int32_t main()
@@ -70,6 +99,6 @@ int32_t main()
     cout.tie(0);
     cin.tie(0);
 
-    cout << solve() << endl;
+    solve();
     return 0;
 }
